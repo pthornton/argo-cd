@@ -25,9 +25,8 @@ spec:
     repoURL: git@github.com:pthornton/argo-cd.git
     targetRevision: HEAD
   syncPolicy:
-    automated: {
-        prune: true,
-        selfHeal: true
-    }
+    automated: {}
     syncOptions:
     - CreateNamespace=false
+    - PrunePropagationPolicy=foreground
+    - PruneLast=true
