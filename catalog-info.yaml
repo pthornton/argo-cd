@@ -6,6 +6,10 @@ metadata:
   annotations:
     github.com/project-slug: pthornton/argocd
     backstage.io/techdocs-ref: dir:.
+  links:
+    - url: http://localhost:3000
+      title: ArgoCD
+      icon: dashboard
 spec:
   type: website
   lifecycle: experimental
