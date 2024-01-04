@@ -1,0 +1,11 @@
+## Argo CD configuration
+## Ref: https://github.com/argoproj/argo-cd
+##
+  
+argo-cd:
+  ## Server
+  server:
+    # -- Argo CD server name
+    name: server
+    # -- The number of server pods to run
+    replicas: 2
