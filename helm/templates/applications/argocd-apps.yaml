@@ -1,43 +1,21 @@
 ---
-apiVersion: v1
-kind: Secret
-metadata:
-  name: guestbook-test
-  namespace: argocd
-  labels:
-    argocd.argoproj.io/secret-type: repository
-type: Opaque
-stringData:
-  url: "git@github.com:pthornton/guestbook-test.git"
----
 apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
+kind: Application
 metadata:
-  name: guestbook
+  name: argocd-appset
+  namespace: argocd
 spec:
-  generators:
-  - scmProvider:
-      github:
-        organization: pthornton-argocd
-        allBranches: false
-        #appSecretName: creds-2073913259
-      cloneProtocol: ssh
-      filters:
-      - repositoryMatch: ^guestbook
-        pathsExist: [helm]
-  template:
-    metadata:
-      name: '{{ repository }}'
-    spec:
-      project: default
-      source:
-        repoURL: '{{ url }}'
-        targetRevision: '{{ branch }}'
-        path: helm
-      destination:
-        server: https://kubernetes.default.svc
-        namespace: '{{ repository }}'
-      syncPolicy:
-        syncOptions:
-          - CreateNamespace=true
-        automated: {}
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: .
+    repoURL: git@github.com:pthornton/argocd-apps.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=false
