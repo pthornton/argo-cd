@@ -7,7 +7,7 @@ metadata:
     github.com/project-slug: pthornton/argocd
     backstage.io/techdocs-ref: dir:.
   links:
-    - url: http://localhost:3000
+    - url: http://localhost:8080
       title: ArgoCD
       icon: dashboard
 spec:
