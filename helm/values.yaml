@@ -17,3 +17,7 @@ argo-cd:
     cm:       
       # -- Timeout to discover if a new manifests version got published to the repository
       timeout.reconciliation: 30s
+      accounts.automation: apiKey, login
+    rbac:
+      policy.csv: |
+        g, automation, role:admin
