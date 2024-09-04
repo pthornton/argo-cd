@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     path: helm
-    repoURL: git@pthornton.github.com:pthornton/argo-cd.git
+    repoURL: git@github.com:pthornton/argo-cd.git
     targetRevision: HEAD
   syncPolicy:
     automated:
